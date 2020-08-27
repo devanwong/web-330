@@ -8,13 +8,48 @@
             crossorigin="anonymous">
     </head>
     <body class="col-md-12">
+        <!-- headline -->
         <h1>jQuery.ajax()</h1>
-        <div id="display-resources">
-            <p>jQuery example using <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax()</a> to retrieve a list of
-                JavaScript Training Resources.</p>
+        <!-- were the JSON will be displayed -->
+        <div id="display-json">
+            <p>This will disappear after button is clicked to show api</p>
         </div>
-        <a href="#" class="btn btn-primary" id="retrieve-resources">Retrieve List</a>
+        <!-- button to grab JSON -->
+        <a href="#" class="btn btn-primary" id="grab-api">Retrieve List</a>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="script.js"></script>
     </body>
+    <!-- script has to be at the bottom of the HTML -->
+    <script>
+    //jquery starts here. 
+    $(document).ready(function() {
+        // button actions
+        $("#grab-api").click(function() {
+            var displayJson = $("#display-json");
+            displayJson.text("Loading data from JSON source...");
+            //ajax call
+            $.ajax({
+            type: "GET",
+            url: "https://jsonplaceholder.typicode.com/posts", // dummy data found on the internet
+            success: function(result) {
+                var output =
+                "<table><thead><tr><th>ID</th><th>Title</th><th>Body</th></thead><tbody>";
+                for (var i in result) {
+                output +=
+                    "<tr><td>" +
+                    result[i].id +
+                    "</td><td>" +
+                    result[i].title +
+                    "</td><td>" +
+                    result[i].body +
+                    "</td></tr>";
+                }
+                output += "</tbody></table>";
+                displayJson.html(output);
+                $("table").addClass("table");
+            }
+            });
+        });
+    });
+    //end of jquery
+    </script>
 </html>
