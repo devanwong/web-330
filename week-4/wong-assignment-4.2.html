@@ -1,0 +1,40 @@
+<!-- /*
+============================================
+; Title: Exercise 4.2
+; Author: Devan Wong
+; Date: 27 August 2020
+; Description: HTTP GET and POST Operations
+;===========================================
+*/  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Assignment 4.2</title>
+    <!-- jQuery reference -->
+    <!-- <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+      <h1>HTTP GET Request</h1>
+      <button id="get1">Get Random Breed</button>
+
+    <script>
+        //onClick event to pull up a random dog breed.
+        //.get only. 
+      $(function() {
+          //id to inline with the button
+          $('#get1').click(function(){
+              //http verb get to grab the api in the url provided.
+              $.get("https://dog.ceo/api/breeds/image/random", function(data, status){
+                  console.log("Data" + JSON.stringify(data) + "\nStatus " + status);
+              })
+          })
+      });
+    </script>
+  </body>
+</html>
