@@ -1,0 +1,51 @@
+
+<!-- /*
+============================================
+; Title: Exercise 5.2
+; Author: Devan Wong
+; Date: 5 September 2020
+; Description: The Proxy Pattern
+;===========================================
+*/  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jQuery reference -->
+    <!-- <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script> -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <h2>Show Dog</h2>
+      <button id="btn">Press me</button><br>
+      <span id="showDog"></span>
+    <script>
+        $(function(){
+            var dog = {
+                name: "Tiki",
+                breed: "Beagle",
+                display: function(){
+                    //clear the span tag before adding new content
+                    $("#showDog").html("");
+                    //adding the content from the dog variable.
+                    $("#showDog").append("<br/> Name: " + this.name + "<br/>" + "Breed: " + this.breed);
+                }
+            };
+            //calling the proxy to processing syntactical versions. 
+            $("#btn").click($.proxy(dog, "display"));
+        });
+
+
+
+    </script>
+  </body>
+</html>
