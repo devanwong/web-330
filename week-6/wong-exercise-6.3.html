@@ -1,0 +1,68 @@
+
+<!-- /*
+============================================
+; Title: Exercise 6.2
+; Author: Devan Wong
+; Date: 5 September 2020
+; Description: ViewModel Object Literals.
+;===========================================
+*/  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Exercise 6.3</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Libraries -->
+    <!-- <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script> -->
+    <script type='text/javascript' src='../knockout-3.5.0.js'></script>
+  </head>
+  <body>
+      <div role="main" class="container">
+          <br><br>
+        <h2>Object Literal Example</h2>
+            <br><br>
+        <div class="form-group">
+            <!-- label for="" == input id==""  -->
+            <label for="txtFirstName">First Name:</label>
+            <input type="text" class="form-control alert-warning" data-bind="value: firstName" id="txtFirstName">
+        </div>
+        <div class="form-group">
+            <label for="txtLastName">Last Name:</label>
+            <input type="text" class="form-control alert-warning" data-bind="value: lastName" id="txtLastName">
+        </div>
+        <div class="form-group">
+            <label for="txtEmail">Last Name:</label>
+            <input type="text" class="form-control alert-warning" data-bind="value: email" id="txtEmail">
+        </div>
+      </div>
+      
+    <script>
+        //object literal
+        var personViewModel = {
+            firstName: 'Devan',
+            lastName: 'Wong',
+            email: 'devan.wong@yahoo.com'
+        };
+        //call apply binding to instantiate a new person view model object.
+        ko.applyBindings(personViewModel);
+    </script>
+  </body>
+</html>
