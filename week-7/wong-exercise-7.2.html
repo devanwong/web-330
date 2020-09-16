@@ -1,0 +1,78 @@
+
+<!-- /*
+============================================
+; Title: Exercise 7.2
+; Author: Devan Wong
+; Date: 15 September 2020
+; Description: The "if" Binding
+;===========================================
+*/  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Libraries -->
+    <!-- <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script> -->
+    <script type='text/javascript' src='../knockout-3.5.0.js'></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+  <body>
+      <div role="main" class="container">
+        <h2>Binding Example</h2>
+
+        <div class="form-group">
+            <label for="txtFName">First name:</label>
+            <input type="text" data-bind="value:firstName" class="form-control" id="txtFName" />
+        </div>
+        <!-- if first name is typed show last name -->
+        <div data-bind="if: firstName">
+            <div class="form-group">
+                <label for="txtLName">Last Name: </label>
+                <input type="text" data-bind="value:lastName" class="form-control" id="txtLName" />
+            </div>
+          </div>
+
+          <br>
+          <!-- if last name is typed display full name  -->
+          <div data-bind="if: lastName">
+            <h2><span id="txtFullName" class="alert-success" data-bind="text:displayName"></span></h2>
+          </div>
+          <br/>
+      </div>
+      
+     
+    <script>
+        // object observable function
+        function PersonViewModel(){
+            // left empty as default so when true it will display next steps.
+            this.firstName = ko.observable("");
+            this.lastName = ko.observable("");
+            // computed to appand more properties. 
+            this.displayName = ko.pureComputed(function(){
+                return this.firstName() + " " + this.lastName()
+            }, this);
+        }
+        // to connect bindings.
+        ko.applyBindings(new PersonViewModel());
+    </script>
+  </body>
+</html>
